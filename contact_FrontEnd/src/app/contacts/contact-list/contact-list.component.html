@@ -1,0 +1,28 @@
+<div *ngIf="cnctcList">
+  <table class="table table-stripe">
+    <thead>
+      <th>Name</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Contact No</th>
+      <th>
+        <button class="btn btn-outline-success" routerLink="/contact">
+          Add New
+        </button>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of cnctcList">
+        <td>{{cntct_nme}}</td>
+        <td>{{cntct_city}}</td>
+        <td>{{cntct_country}}</td>
+        <td>{{ContactNo}}</td>
+        <td>
+          <button class="btn btn-outline-dark" (click)="EditRecord(c.cntct_mst_id)">
+            <i class="fa fa-pencil"></i> Add New
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

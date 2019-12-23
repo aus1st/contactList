@@ -1,0 +1,50 @@
+<h4 class="display 4">Contact Details</h4>
+<hr />
+<form #form="ngForm" (submit)="onSubmit(form)">
+  <input
+    type="hidden"
+    name="cntct_mst_id"
+    #cntct_mst_id="ngModel"
+    [(ngModel)]="cnctcDtls.cntct_mst_id"
+  />
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Contact Type</label>
+        <select
+          name="cntct_no_typ"
+          #cntct_no_typ="ngModel"
+          [(ngModel)]="cnctcDtls.cntct_no_typ"
+          class="form-control"
+        >
+          <option value="">--Select--</option>
+          <option value="Home">Home</option>
+          <option value="Mobile">Mobile</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Contact No.</label>
+        <input
+          name="cntct_no"
+          #cntct_no="ngModel"
+          [(ngModel)]="cnctcDtls.cntct_no"
+          class="form-control"
+          [class.is-valid]="!isValid && cnctcDtls.cntct_no==''"
+        />
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-dark">
+    Add
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-dark ml-1"
+    (click)="AddEditDtl(null,cnctcDtls.cntct_mst_id)"
+  >
+    Close
+  </button>
+</form>

@@ -1,0 +1,134 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Name</label> Ahmed
+        <input
+          name="cntct_nme"
+          #cntct_nme="ngModel"
+          [(ngModel)]="cntctService.contact.cntct_nme"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Occupation</label>
+        <input
+          name="cntct_ocptn"
+          #cntct_ocptn="ngModel"
+          [(ngModel)]="cntctService.contact.cntct_ocptn"
+          class="form-control"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Address Line 1</label>
+        <input
+          type="text"
+          name="cntct_addrss_1"
+          #cntct_addrss_1="ngModel"
+          [(ngModel)]="cntctService.contact.cntct_addrss_1"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Address Line 2</label>
+        <input
+          type="text"
+          name="cntct_addrss_2"
+          #cntct_addrss_2="ngModel"
+          [(ngModel)]="cntctService.contact.cntct_addrss_2"
+          class="form-control"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>City</label>
+        <select
+          name="cntct_city"
+          #cntct_city="ngModel"
+          [(ngModel)]="cntctService.contact.cntct_city"
+          class="form-control"
+        >
+          <option value="0">--Select--</option>
+          <option value="Karachi">Karachi</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Lahore">Lahore</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Country</label>
+        <select
+          name="cntct_country"
+          #cntct_country="ngModel"
+          [(ngModel)]="cntctService.contact.cntct_country"
+          class="form-control"
+        >
+          <option value="0">--Select--</option>
+          <option value="Pakistan">Pakistan</option>
+          <option value="UAE">UAE</option>
+          <option value="UK">UK</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="form-group">
+    <div class="col-md-6 offset-md-6" align-right>
+      <button class="btn btn-dark">Add Details</button>
+    </div>
+  </div> -->
+  <!-- <app-contact-dtls> </app-contact-dtls> -->
+
+  <table class="table table-stripe">
+    <thead>
+      <th>Conact Type</th>
+      <th>Contact No.</th>
+      <th align="right">
+        <button
+          class="btn btn-dark"
+          (click)="AddEditDtl(null,cntctService.contact.cntct_mst_id)"
+        >
+          Add Details
+        </button>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of cntctService.contactDtl; let i=index">
+        <td>{{d.cntct_no_typ}}</td>
+        <td>{{d.cntct_no}}</td>
+        <td>
+          <a
+            class="btn btn-dark text-white ml-1"
+            (click)="AddEditDtl(i,d.cntct_mst_id)"
+            ><i class="fa fa-pancil"></i>
+          </a>
+          <a
+            class="btn btn-danger text-white"
+            (click)="deleteLineItem(i)"
+            ><i class="fa fa-trash"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button type="submit" class="btn btn-dark" >Submit</button>
+</form>
+<!-- cntct_nme: string;
+cntct_ocptn: string;
+cntct_gndr: string;
+cntct_addrss_1: string;
+cntct_addrss_2: string;
+cntct_city: string;
+cntct_country: string; -->
